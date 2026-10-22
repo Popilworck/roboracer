@@ -16,6 +16,7 @@ adapter:
     max_deceleration: 6.9       # m/s^2 = racecar.ini mue 0.7 * g: does not limit the planned braking at speed_scale <= 1
     cmd_timeout: 0.5            # s; /drive gap that restarts the integral and the speed ramp from the measured speed (fast_bridge has its own, also 0.5 s, that stops the car)
     auto_unstick: false
+    max_steering_angle: 0.5235  # rad, steering lock (sim: steering_command 1.0)
 
 wheel_odom:
   ros__parameters:
@@ -24,3 +25,5 @@ wheel_odom:
     speed_window: 0.1           # s; speed is averaged over this window
     publish_tf: true            # TF odom -> base_link, as vesc_to_odom does; Cartographer adds map -> odom
     use_imu_yaw_rate: true      # gyro yaw rate; the steering model under-reads turns by ~45%
+    wheelbase: 0.324            # m, rear axle (base_link) -> front axle
+    max_steering_angle: 0.5235  # rad, steering lock (sim: steering_command 1.0)

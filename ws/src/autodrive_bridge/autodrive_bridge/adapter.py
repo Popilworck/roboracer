@@ -47,9 +47,7 @@ class Adapter(Node):
         p = self.declare_parameter
         self.ns = p('vehicle_ns', '/autodrive/roboracer_1').value
         self.odom_topic = p('odom_topic', '/odom').value
-        self.max_steer = p('max_steering_angle', Parameter.Type.DOUBLE).value  # rad at steering_command = 1 (vehicle.yaml)
-        if self.max_steer is None:
-            raise RuntimeError('max_steering_angle unset: load control/config/vehicle.yaml')
+        self.max_steer = p('max_steering_angle', 0.5236).value  # rad at steering_command = 1 (adapter.yaml)
         self.laser_x = p('laser_x', 0.2733).value
         self.laser_z = p('laser_z', 0.096).value
         self.camera_x = p('camera_x', -0.015).value

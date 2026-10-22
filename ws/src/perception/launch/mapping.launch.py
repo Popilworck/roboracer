@@ -27,7 +27,7 @@ def generate_launch_description():
     map_origin = Node(package='perception', executable='map_origin', name='map_origin', output='screen')
 
     return LaunchDescription([
-        DeclareLaunchArgument('track', description='track name; save with: ros2 run perception save_map <track>'),
+        DeclareLaunchArgument('track', default_value="default" ,description='track name; save with: ros2 run perception save_map <track>'),
         LogInfo(msg=['Mapping track "', LaunchConfiguration('track'),
                      '". When done: ros2 run perception save_map ', LaunchConfiguration('track')]),
         cartographer,
